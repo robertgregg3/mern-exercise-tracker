@@ -22,9 +22,9 @@ class CreateExercises extends Component {
     });
   }
 
-  onChangeUsername(e) {
+  onChangeUsername = (e) => {
     this.setState({ username: e.target.value });
-  }
+  };
   onChangeDescription = (e) => {
     this.setState({ description: e.target.value });
   };

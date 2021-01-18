@@ -31,13 +31,18 @@ class EditExercises extends Component {
         console.log(error);
       });
 
-    axios.get("http://localhost:5000/users/").then((response) => {
-      if (response.data.length > 0) {
-        this.setState({
-          users: response.data.map((user) => user.username),
-        });
-      }
-    });
+    axios
+      .get("http://localhost:5000/users/")
+      .then((response) => {
+        if (response.data.length > 0) {
+          this.setState({
+            users: response.data.map((user) => user.username),
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   onChangeUsername = (e) => {
@@ -64,9 +69,10 @@ class EditExercises extends Component {
     };
 
     console.log(exercise);
+
     axios
       .post(
-        "http://localhost:5000/exercises/update" + this.props.match.params.id,
+        "http://localhost:5000/exercises/update/" + this.props.match.params.id,
         exercise
       )
       .then((res) => console.log(res.data));
